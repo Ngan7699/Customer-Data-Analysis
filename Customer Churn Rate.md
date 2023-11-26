@@ -1,6 +1,6 @@
 
 ````sql
-select (total_churn*100)/total_customer as churnrate
+select (total_churn*100)/total_customer as ChurnRate
 from
 (select SUM(CASE 
 				WHEN status='unactive' then 1
@@ -23,7 +23,7 @@ from
 		(Select a.CustomerKey, a.SalesAmount, a.max_date, b.max_orderdate
 		from
 		(select CustomerKey, SalesAmount, OrderDate,(select MAX(OrderDate) from FactInternetSales) as max_date
-		from FactInternetSales) a
+		from FactInternetSales) a ///print max date of dataset
 		left join
 		(select CustomerKey, max (OrderDate) as max_orderdate 
 		from FactInternetSales
