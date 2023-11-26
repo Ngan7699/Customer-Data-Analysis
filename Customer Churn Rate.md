@@ -1,3 +1,5 @@
+
+````sql
 select (total_churn*100)/total_customer as churnrate
 from
 (select SUM(CASE 
@@ -28,4 +30,4 @@ from
 		group by CustomerKey) b
 		on a.CustomerKey = b.CustomerKey) c
 ) d) e
-group by CustomerKey, status) f) g
+group by CustomerKey, status) f) g ````
