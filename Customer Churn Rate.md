@@ -18,16 +18,16 @@ from
 		end as status
 from
 
-(select c.CustomerKey,c.SalesAmount, DATEDIFF(day, max_orderdate, max_date) date_diff
+(select c.CustomerKey,c.SalesAmount, DATEDIFF(day, max_orderdate, max_date) date_diff 
 from
 		(Select a.CustomerKey, a.SalesAmount, a.max_date, b.max_orderdate
 		from
 		(select CustomerKey, SalesAmount, OrderDate,(select MAX(OrderDate) from FactInternetSales) as max_date
-		from FactInternetSales) a ---print max date of dataset
+		from FactInternetSales) a         ---print max date of dataset
 		left join
 		(select CustomerKey, max (OrderDate) as max_orderdate 
 		from FactInternetSales
-		group by CustomerKey) b
-		on a.CustomerKey = b.CustomerKey) c
+		group by CustomerKey) b          ---print the latest purchase date by the customer
+		on a.CustomerKey = b.CustomerKey) c  
 ) d) e
 group by CustomerKey, status) f) g ````
