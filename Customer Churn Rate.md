@@ -30,4 +30,5 @@ from
 		group by CustomerKey) b          ---print the latest purchase date by the customer
 		on a.CustomerKey = b.CustomerKey) c  
 ) d) e
-group by CustomerKey, status) f) g ````
+group by CustomerKey, status) f) g
+````
